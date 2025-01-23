@@ -6,7 +6,7 @@ import (
 	"fmt"
 )
 
-//go:embed test-registry/entities.json
+//go:embed shared-registry/entities.json
 var entitiesJSON []byte
 
 type entity struct {
