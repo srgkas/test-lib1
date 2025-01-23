@@ -1,0 +1,3 @@
+[submodule "test-registry"]
+	path = test-registry
+	url = https://github.com/srgkas/test-registry
