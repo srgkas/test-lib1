@@ -1,13 +1,11 @@
-package test_lib1
+package golib
 
 import (
 	_ "embed"
 	"encoding/json"
 	"fmt"
+	"os"
 )
-
-//go:embed shared-registry/entities.json
-var entitiesJSON []byte
 
 type entity struct {
 	name   string
@@ -17,7 +15,11 @@ type entity struct {
 var entities []entity
 
 func init() {
-	err := json.Unmarshal(entitiesJSON, &entities)
+	entitiesJSON, err := os.ReadFile("../shared/config.json")
+	if err != nil {
+		panic(err)
+	}
+	err = json.Unmarshal(entitiesJSON, &entities)
 
 	if err != nil {
 		fmt.Println("Error parsing entities JSON")
